@@ -11,21 +11,15 @@ struct Path {
 class WeightedDirectedGraph
 {
 public:
-    WeightedDirectedGraph(vector<Path> const &paths, int numOfElement)
-    {
-        adjacencyMatrix.reserve(numOfElement);
-        for (auto &path: paths)
-        {
-            adjacencyMatrix[path.node].
-                push_back(make_pair(path.destination, path.weight));
-        }
-    }
-    
-    const vector<vector<pair<int, int>>>& getAdjacencyMatrix() const
-    {
-        return adjacencyMatrix;
-    }
-
+    WeightedDirectedGraph(vector<Path> const &paths, int numOfNodes);
+    const vector<vector<pair<int, int>>>& getAdjacencyMatrix() const;
+    void findShortestPathDijkstra(int sourceNode, int nodeDistance[]);
+    int getNumberOfNodes() const;
 private:
     vector<vector<pair<int, int>>> adjacencyMatrix;
+    int NUMBER_OF_NODES = 0;
+    bool hasAPath(int fromNode, int toNode);
+    int getPathWeight(int fromNode, int toNode);
+    int getMinDistIndex(int nodeDistance[], bool nodeVisited[]);
+    bool isAShortestPath(int nodeDistance[], int currentNode, int toNode);
 };
