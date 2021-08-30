@@ -3,7 +3,7 @@
 An example of weighted directed graph implementation.
 It includes followings
 
-1. An implemantation of weighted directed
+1. An implemantation of weighted directed graph.
 2. Dijkstra shortest path algorithm on this implementation.
 3. A util function to find given graph is acyclic or not.
 
