@@ -55,17 +55,16 @@ bool WeightedDirectedGraph::hasAPath(int fromNode, int toNode)
 
 int WeightedDirectedGraph::getPathWeight(int fromNode, int toNode)
 {
-        if(adjacencyMatrix[fromNode].size() > 0)
+    pair<int, int> desiredPath;
+
+    for(auto& v : adjacencyMatrix[fromNode])
+    {
+        if(v.first == toNode)
         {
-                for(auto& v : adjacencyMatrix[fromNode])
-                {
-                        if(v.first == toNode)
-                        {
-                                return v.second;
-                        }
-                }
+            desiredPath = v;
         }
-        return 0;
+    }
+    return desiredPath.second;
 }
 
 bool WeightedDirectedGraph::isAShortestPath(int nodeDistance[], int currentNode, int toNode)
