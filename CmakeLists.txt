@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.12)
+project(Weighted-Directed-Graph)
+add_subdirectory(googletest) 
+include_directories(googletest/include)
+
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -std=c++17")
+##SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+
+add_executable(WDG-UnitTests WDGUnitTests.cpp WeightedDirectedGraph.cpp)
+target_link_libraries(WDG-UnitTests PRIVATE gtest)
