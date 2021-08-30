@@ -1,6 +1,11 @@
 # Weighted Directed Graph
 
-An example of directed weighted graph implementation.
+An example of weighted directed graph implementation.
+It includes followings
+
+1. An implemantation of weighted directed
+2. Dijkstra shortest path algorithm on this implementation.
+3. A util function to find given graph is acyclic or not.
 
 ## Before Build
 !!!NOTE!!! I tried this in MacOS only so if you can find similar Linux commands also it  will works.
