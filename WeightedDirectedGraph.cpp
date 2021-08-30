@@ -40,17 +40,17 @@ int WeightedDirectedGraph::getMinDistIndex(int nodeDistance[], bool nodeVisited[
 
 bool WeightedDirectedGraph::hasAPath(int fromNode, int toNode)
 {
-        if(adjacencyMatrix[fromNode].size() > 0)
+    if(adjacencyMatrix[fromNode].size() > 0)
+    {
+        for(auto& v : adjacencyMatrix[fromNode])
         {
-                for(auto& v : adjacencyMatrix[fromNode])
-                {
-                        if(v.first == toNode)
-                        {
-                                return true;
-                        }
-                }
+            if(v.first == toNode)
+            {
+                return true;
+            }
         }
-        return false;
+    }
+    return false;
 }
 
 int WeightedDirectedGraph::getPathWeight(int fromNode, int toNode)
