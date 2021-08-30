@@ -28,6 +28,7 @@ and then add "set(GOOGLETEST_VERSION 1.9.0)" to file googletest-master/googletes
 
 From projects root directory
 ```bash
+$ mkdir build
 $ cd build
 $ cmake ..
 $ make
