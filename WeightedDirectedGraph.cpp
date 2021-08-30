@@ -108,3 +108,75 @@ void WeightedDirectedGraph::findShortestPathDijkstra(int sourceNode, int nodeDis
         }
     }
 }
+
+int WeightedDirectedGraph::getLeafNode(vector<vector<pair<int, int>>> testedadjMatrix, bool nodeRemoved[])
+{
+    for(int i = 0; i < testedadjMatrix.size(); i++)
+    {
+            if(testedadjMatrix[i].size() == 0 && !nodeRemoved[i])
+            {
+                    return i;
+            }
+    }
+    return -1;
+}
+
+void removeLeafNode(vector<vector<pair<int, int>>>& testedadjMatrix, int removeNode, bool *nodeRemoved)
+{
+    for(auto& node : testedadjMatrix)
+    {
+            vector<pair<int, int>>::iterator it1 = node.begin();
+            nodeRemoved[removeNode] = true;
+            for(int path = 0; path < node.size(); path++)
+            {
+                if(node[path].first == removeNode)
+                {
+                node.erase(it1);
+                }
+                it1++;
+            }
+    }
+}
+
+bool WeightedDirectedGraph::isAllNodesRemoved(bool *nodeRemoved)
+{
+    for(int i = 0; i < NUMBER_OF_NODES; i++)
+    {
+        if(nodeRemoved[i] == false)
+        {
+            return false;
+        }    
+    }
+    return true;
+}
+
+bool WeightedDirectedGraph::isGraphAcyclic()
+{
+    vector<vector<pair<int, int>>> testedadjMatrix = adjacencyMatrix;
+    int leafNodeIndex = 0;
+    bool nodeRemoved[NUMBER_OF_NODES];
+
+    for(int i = 0; i < NUMBER_OF_NODES; i++)
+    {
+        nodeRemoved[i] = false;    
+    }
+
+    while(1)
+    {
+        if(isAllNodesRemoved(nodeRemoved))
+        {
+            return true;
+        }
+
+        leafNodeIndex = getLeafNode(testedadjMatrix, nodeRemoved);
+       
+        if(leafNodeIndex < 0)
+        {
+            return false;
+        }
+
+        removeLeafNode(testedadjMatrix, leafNodeIndex, nodeRemoved);
+
+    }
+    return false;
+}

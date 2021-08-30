@@ -15,6 +15,7 @@ public:
     const vector<vector<pair<int, int>>>& getAdjacencyMatrix() const;
     void findShortestPathDijkstra(int sourceNode, int nodeDistance[]);
     int getNumberOfNodes() const;
+    bool isGraphAcyclic();
 private:
     vector<vector<pair<int, int>>> adjacencyMatrix;
     int NUMBER_OF_NODES = 0;
@@ -22,4 +23,6 @@ private:
     int getPathWeight(int fromNode, int toNode);
     int getMinDistIndex(int nodeDistance[], bool nodeVisited[]);
     bool isAShortestPath(int nodeDistance[], int currentNode, int toNode);
+    int getLeafNode(vector<vector<pair<int, int>>> testedadjMatrix, bool *nodeRemoved);
+    bool isAllNodesRemoved(bool *nodeRemoved);
 };
