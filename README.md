@@ -1,4 +1,4 @@
-# Directed Weighted Graph
+# Weighted Directed Graph
 
 An example of directed weighted graph implementation.
 
